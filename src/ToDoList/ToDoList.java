@@ -86,14 +86,9 @@ public class ToDoList
         System.out.println("Please enter the dueDate in the format DD-MM-YYYY or project to show a task :");
         Scanner in1 = new Scanner(System.in);
         String result = in1.next();
-        for(Task task : tasks)
-        {
-            if (result.toLowerCase().equals(task.getProject().toLowerCase()) || result.equals(task.getDueDate()))
-            {
-                System.out.println("Task details are:");
-                System.out.println("\n" + task);
-            }
-        }
+        tasks.stream()
+                .filter ((s) -> result.toLowerCase().equals(s.getProject().toLowerCase()) ||result.toLowerCase().equals(s.getDueDate()) )
+                .forEach(s -> System.out.println(s));
     }
     /* Show the all tasks added in the file */
     public void showAllTasks()
